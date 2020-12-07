@@ -6,6 +6,7 @@ async function scrapeAll(browserInstance, search){
         browser = await browserInstance;
         await scraperLoi.scraper(browser, search);
         await scraperMeli.scraper(browser, search);
+        // browser.close()
 
     }
     catch(err){
