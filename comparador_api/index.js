@@ -4,14 +4,7 @@ import cors from "cors";
 import path from "path";
 import router from "./routes/";
 const database = require("./config/database");
-const browserObject = require("./config/browser");
-const scraperPage = require("./services/scraper");
 import {} from "dotenv/config";
-
-let browserInstance = browserObject.startBrowser();
-
-// Pass the browser instance to the scraper service
-scraperPage(browserInstance);
 
 //coneccion a la base de datos
 database.connectDatabase();

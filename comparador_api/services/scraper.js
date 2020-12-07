@@ -1,11 +1,11 @@
 const scraperLoi = require('../domain/scraperLoi');
 const scraperMeli = require('../domain/scraperMeli');
-async function scrapeAll(browserInstance){
+async function scrapeAll(browserInstance, search){
     let browser;
     try{
         browser = await browserInstance;
-        await scraperLoi.scraper(browser);
-        await scraperMeli.scraper(browser);
+        await scraperLoi.scraper(browser, search);
+        await scraperMeli.scraper(browser, search);
 
     }
     catch(err){
@@ -13,4 +13,4 @@ async function scrapeAll(browserInstance){
     }
 }
 
-module.exports = (browserInstance) => scrapeAll(browserInstance)
+module.exports = (browserInstance, search) => scrapeAll(browserInstance, search)
