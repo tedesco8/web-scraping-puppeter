@@ -17,15 +17,23 @@ const scraperObject = {
 
     //Capturamos enlaces
     const enlaces = await page.evaluate(() => {
-
       const nodes = document.getElementsByClassName("ui-search-result__image") 
       const arrNodes=Array.from(nodes)
       const links = arrNodes.map(n=n=>n.firstElementChild.href)
-      
       return links;
     });
-    console.log(enlaces.length)
-    console.log(enlaces);
+    const articles = []
+    for(let enlace of enlaces) {
+      await page.goto(enlace)
+      await page.waitForSelector('.ui-pdp-title')
+      const article = await page.evaluate(() => {
+        const tmp = {}
+        tmp.title = document.querySelector('.ui-pdp-title').innerText
+        return tmp
+      })
+      articles.push(article)
+    }
+    console.log(articles)
     //browser.close()
   },
 };
