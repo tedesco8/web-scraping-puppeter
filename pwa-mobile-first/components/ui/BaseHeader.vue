@@ -2,12 +2,13 @@
   <header class="header dark:text-white dark:bg-blue-main-800">
     <nuxt-link class="flex items-center" to="/">
       <img
-        src="../../assets/icons/inglesLogoGraduado.png"
+        src="../../assets/icons/BuscaloLogoSinFondo.png"
         alt=""
         class="w-6 mr-3"
       />
-      <h1 class="font-bold text-base">Tu tienda online</h1>
+      <!-- <h1 class="font-bold text-base">uscalo</h1> -->
     </nuxt-link>
+    <ColorSwitch />
     <nuxt-link class="hidden md:block" to="/profile">
       <img
         class="w-10 rounded-full"

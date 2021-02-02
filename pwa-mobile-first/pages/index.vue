@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ColorSwitch />
     <Logo />
+    <Search />
   </div>
 </template>
