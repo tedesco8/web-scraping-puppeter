@@ -30,6 +30,7 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 import firebase from 'firebase/app'
 import SocialLoginButton from '~/components/auth/SocialLoginButton.vue'
 import ColorSwitch from '~/components/ui/ColorSwitch.vue'
@@ -42,6 +43,7 @@ export default {
     SocialLoginButton,
   },
   methods: {
+    ...mapMutations('authentication', ['setUser']),
     async loginWithEmail() {
       try {
         const result = await this.$fire.auth.createUserWithEmailAndPassword(
@@ -49,6 +51,7 @@ export default {
           '222324'
         )
         console.log(result)
+        this.setUser(result.user)
       } catch (e) {
         console.log(e)
       }
@@ -59,6 +62,7 @@ export default {
         debugger
         const result = await this.$fire.auth.signInWithPopup(provider)
         console.log(result)
+        this.setUser(result.user)
       } catch (error) {
         // TODO: show toast
         console.error('login error', error)
